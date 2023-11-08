@@ -1,4 +1,5 @@
 import streamlit as stl
+import pandas as pd
 import snowflake.connector
 
 stl.title('My Clothing App')
@@ -11,11 +12,11 @@ def get_image(a):
         my_cur.execute("SELECT direct_url from catalog_for_website where color_or_style="+a)
         return my_cur.fetchall()
 my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
-my_data_row = get_color_list()
+my_data_row = pd.dataframe(get_color_list())
 my_cnx.close()
 
 dataframe(my_data_row)
-color_style_selected=stl.selectbox("Pick a sweatsuit colour or style:", stl.dataframe(my_data_row))
+color_style_selected=stl.selectbox("Pick a sweatsuit colour or style:", my_data_row)
 
 my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_url = get_image(color_style_selected)
