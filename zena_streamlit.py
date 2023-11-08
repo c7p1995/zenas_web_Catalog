@@ -10,12 +10,12 @@ def get_image():
         with my_cnx.cursor(a) as my_cur:
         my_cur.execute("SELECT direct_url from catalog_for_website where color_or_style="+a)
         return my_cur.fetchall()
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_data_row = get_color_list()
 my_cnx.close()
 color_style_selected=stl.select("Pick a sweatsuit colour or style:", list(my_data_row[color_or_style]),['Pink'])
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_url = get_image(color_style_selected)
 my_cnx.close()
-st.markdown("![Alt Text]("+my_url+")")
+stl.markdown("![Alt Text]("+my_url+")")
