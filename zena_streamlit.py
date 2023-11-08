@@ -1,3 +1,3 @@
 import streamlit as stl
 
-stl.tittle('My Parents New Healthy Dinner')
+stl.title('My Parents New Healthy Dinner')
