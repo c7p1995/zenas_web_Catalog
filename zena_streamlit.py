@@ -9,7 +9,7 @@ def get_color_list():
         return my_cur.fetchall()
 def get_image(a):
     with my_cnx.cursor() as my_cur:
-        my_cur.execute("SELECT direct_url from catalog_for_website where color_or_style='%a'")
+        my_cur.execute("SELECT direct_url from catalog_for_website where color_or_style=%a")
         return my_cur.fetchall()
 my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_data_row = pd.DataFrame(get_color_list())
