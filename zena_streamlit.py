@@ -20,5 +20,4 @@ my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_url = pd.DataFrame(get_image(color_style_selected))
 my_cnx.close()
 
-stl.dataframe(my_url)
 stl.markdown("![Alt Text]("+my_url[0][0]+")")
