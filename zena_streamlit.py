@@ -9,4 +9,4 @@ def get_color_list():
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_data_row = get_fruit_load_list()
 my_cnx.close()
-fruits_selected=streamlit.select("Pick a sweatsuit colour or style:", list(my_data_row[]),['Pink'])
+fruits_selected=streamlit.select("Pick a sweatsuit colour or style:", list(my_data_row[color_or_style]),['Pink'])
