@@ -6,8 +6,8 @@ def get_color_list():
     with my_cnx.cursor() as my_cur:
         my_cur.execute("SELECT color_or_style from catalog_for_website")
         return my_cur.fetchall()
-def get_image():
-    with my_cnx.cursor(a) as my_cur:
+def get_image(a):
+    with my_cnx.cursor() as my_cur:
         my_cur.execute("SELECT direct_url from catalog_for_website where color_or_style="+a)
         return my_cur.fetchall()
 my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
