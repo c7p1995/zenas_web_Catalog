@@ -14,7 +14,7 @@ my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_data_row = get_color_list()
 my_cnx.close()
 
-color_style_selected=stl.selectbox("Pick a sweatsuit colour or style:", list(my_data_row),['Pink'])
+color_style_selected=stl.selectbox("Pick a sweatsuit colour or style:", my_data_row)
 
 my_cnx = snowflake.connector.connect(**stl.secrets["snowflake"])
 my_url = get_image(color_style_selected)
